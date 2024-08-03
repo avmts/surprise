@@ -9,6 +9,7 @@
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
     min-height: 100vh;
+    transition: background 0.5s ease;
   }
   .container {
     background: rgba(255, 255, 255, 0.9);
@@ -19,10 +20,12 @@
     width: 90%;
     max-width: 800px;
     margin: 20px auto;
+    transition: all 0.5s ease;
   }
   h1, h2 {
     color: #ff6b6b;
     margin-bottom: 0.5em;
+    transition: color 0.5s ease;
   }
   h1 { font-size: 2.5em; }
   h2 { font-size: 1.8em; }
@@ -30,11 +33,13 @@
     color: #4a4a4a;
     font-size: 1.2em;
     line-height: 1.6;
+    transition: color 0.5s ease;
   }
   .heart {
     font-size: 5em;
     color: #ff6b6b;
     animation: heartbeat 1s infinite;
+    transition: color 0.5s ease;
   }
   @keyframes heartbeat {
     0% { transform: scale(1); }
@@ -45,6 +50,7 @@
     margin-top: 2em;
     font-style: italic;
     color: #777;
+    transition: color 0.5s ease;
   }
   .button {
     background-color: #ff6b6b;
@@ -54,7 +60,7 @@
     font-size: 1em;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     margin-top: 1em;
     margin-right: 0.5em;
   }
@@ -67,6 +73,7 @@
     border-radius: 10px;
     max-width: 100%;
     height: auto;
+    transition: border-color 0.5s ease;
   }
   #messageList {
     margin-top: 2em;
@@ -76,6 +83,7 @@
     border: 1px solid #ddd;
     padding: 1em;
     border-radius: 5px;
+    transition: border-color 0.5s ease;
   }
   .message-item {
     display: flex;
@@ -83,6 +91,7 @@
     align-items: center;
     margin-bottom: 0.5em;
     flex-wrap: wrap;
+    transition: background-color 0.5s ease;
   }
   .like-button {
     background-color: #4CAF50;
@@ -92,6 +101,7 @@
     border-radius: 3px;
     cursor: pointer;
     margin-top: 5px;
+    transition: all 0.3s ease;
   }
   .like-button:hover {
     background-color: #45a049;
@@ -106,6 +116,7 @@
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
+    transition: border-color 0.5s ease;
   }
   #addCustomMessage, #addCustomDate {
     margin-top: 0.5em;
@@ -118,11 +129,13 @@
     border: 1px solid #ddd;
     width: 100%;
     box-sizing: border-box;
+    transition: border-color 0.5s ease;
   }
   #countdown {
     font-size: 1.5em;
     margin-top: 1em;
     color: #ff6b6b;
+    transition: color 0.5s ease;
   }
   .photo-album {
     display: flex;
@@ -138,7 +151,7 @@
     background-position: center;
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
   }
   .photo:hover {
     transform: scale(1.1);
@@ -165,6 +178,7 @@
     font-style: italic;
     color: #ff6b6b;
     margin-top: 1em;
+    transition: color 0.5s ease;
   }
   .valentine-images {
     display: flex;
@@ -179,11 +193,45 @@
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
   }
   .valentine-image:hover {
     transform: scale(1.1);
   }
+
+  /* Styles spécifiques aux humeurs */
+  body.happy {
+    background: linear-gradient(45deg, #FFD700 0%, #FFA500 100%);
+  }
+  body.romantic {
+    background: linear-gradient(45deg, #FF69B4 0%, #FF1493 100%);
+  }
+  body.nostalgic {
+    background: linear-gradient(45deg, #B0C4DE 0%, #4682B4 100%);
+  }
+  body.excited {
+    background: linear-gradient(45deg, #FF4500 0%, #FF6347 100%);
+  }
+
+  .happy .container { box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3), 0 6px 6px rgba(255, 165, 0, 0.3); }
+  .romantic .container { box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3), 0 6px 6px rgba(255, 20, 147, 0.3); }
+  .nostalgic .container { box-shadow: 0 10px 20px rgba(176, 196, 222, 0.3), 0 6px 6px rgba(70, 130, 180, 0.3); }
+  .excited .container { box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3), 0 6px 6px rgba(255, 99, 71, 0.3); }
+
+  .happy h1, .happy h2, .happy .heart, .happy #countdown, .happy #loveQuote { color: #FFD700; }
+  .romantic h1, .romantic h2, .romantic .heart, .romantic #countdown, .romantic #loveQuote { color: #FF1493; }
+  .nostalgic h1, .nostalgic h2, .nostalgic .heart, .nostalgic #countdown, .nostalgic #loveQuote { color: #4682B4; }
+  .excited h1, .excited h2, .excited .heart, .excited #countdown, .excited #loveQuote { color: #FF4500; }
+
+  .happy .button { background-color: #FFA500; }
+  .romantic .button { background-color: #FF69B4; }
+  .nostalgic .button { background-color: #6495ED; }
+  .excited .button { background-color: #FF6347; }
+
+  .happy .button:hover { background-color: #FFD700; }
+  .romantic .button:hover { background-color: #FF1493; }
+  .nostalgic .button:hover { background-color: #4682B4; }
+  .excited .button:hover { background-color: #FF4500; }
 
   @media (max-width: 600px) {
     .container {
@@ -232,7 +280,7 @@
     
     <div id="countdown"></div>
     <div class="valentine-images">
-      <img src="https://websim.ai/platform/love/heart_balloons.svg" alt="Ballons en forme de cœur" class="valentine-image">
+      <img src="https://www.vecteezy.com/vector-art/16137778-group-of-heart-balloons-tied-together-cartoon-vector-clipart" alt="Ballons en forme de cœur" class="valentine-image">
       <img src="https://websim.ai/platform/love/chocolate_box.svg" alt="Boîte de chocolats" class="valentine-image">
       <img src="https://websim.ai/platform/love/rose_bouquet.svg" alt="Bouquet de roses" class="valentine-image">
       <img src="https://websim.ai/platform/love/love_letter.svg" alt="Lettre d'amour" class="valentine-image">
@@ -357,7 +405,96 @@
   function updateMood() {
     const mood = moodSelector.value;
     document.body.className = mood;
-    // Vous pouvez ajouter plus de logique ici pour changer l'apparence en fonction de l'humeur
+    
+    // Logique supplémentaire en fonction de l'humeur
+    switch(mood) {
+      case 'happy':
+        changeBackgroundAnimation('confetti');
+        playHappyMusic();
+        break;
+      case 'romantic':
+        changeBackgroundAnimation('hearts');
+        playRomanticMusic();
+        break;
+      case 'nostalgic':
+        changeBackgroundAnimation('sepia');
+        playNostalgicMusic();
+        break;
+      case 'excited':
+        changeBackgroundAnimation('fireworks');
+        playExcitedMusic();
+        break;
+    }
+    
+    updateQuoteBasedOnMood(mood);
+    updateImagesBasedOnMood(mood);
+  }
+
+  function changeBackgroundAnimation(animationType) {
+    // Supprime toutes les animations précédentes
+    document.body.classList.remove('confetti', 'hearts', 'sepia', 'fireworks');
+    
+    // Ajoute la nouvelle animation
+    document.body.classList.add(animationType);
+  }
+
+  function playHappyMusic() {
+    // Ici, vous pouvez ajouter du code pour jouer une musique joyeuse
+    console.log("Playing happy music");
+  }
+
+  function playRomanticMusic() {
+    // Ici, vous pouvez ajouter du code pour jouer une musique romantique
+    console.log("Playing romantic music");
+  }
+
+  function playNostalgicMusic() {
+    // Ici, vous pouvez ajouter du code pour jouer une musique nostalgique
+    console.log("Playing nostalgic music");
+  }
+
+  function playExcitedMusic() {
+    // Ici, vous pouvez ajouter du code pour jouer une musique excitante
+    console.log("Playing excited music");
+  }
+
+  function updateQuoteBasedOnMood(mood) {
+    let quote = "";
+    switch(mood) {
+      case 'happy':
+        quote = "Le bonheur est la seule chose qui se double si on le partage. - Albert Schweitzer";
+        break;
+      case 'romantic':
+        quote = "L'amour est composé d'une seule âme habitant deux corps. - Aristote";
+        break;
+      case 'nostalgic':
+        quote = "La nostalgie, c'est le désir d'on ne sait quoi. - Antoine de Saint-Exupéry";
+        break;
+      case 'excited':
+        quote = "L'excitation est le moteur de la découverte. - Isaac Asimov";
+        break;
+    }
+    loveQuoteElement.textContent = quote;
+  }
+
+  function updateImagesBasedOnMood(mood) {
+    const valentineImages = document.querySelectorAll('.valentine-image');
+    valentineImages.forEach((img, index) => {
+      switch(mood) {
+        case 'happy':
+          img.src = `https://websim.ai/platform/love/happy_${index + 1}.svg`;
+          break;
+        case 'romantic':
+          img.src = `https://websim.ai/platform/love/romantic_${index + 1}.svg`;
+          break;
+        case 'nostalgic':
+          img.src = `https://websim.ai/platform/love/nostalgic_${index + 1}.svg`;
+          break;
+        case 'excited':
+          img.src = `https://websim.ai/platform/love/excited_${index + 1}.svg`;
+          break;
+      }
+    });
   }
 
   function updateCountdown() {
@@ -575,6 +712,9 @@
       start: 'top 80%',
     }
   });
+
+  // Initialiser l'humeur par défaut
+  updateMood();
 </script>
 </body>
 </html>
