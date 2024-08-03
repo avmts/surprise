@@ -361,10 +361,10 @@
     background-color: #d32f2f;
   }
 
-  #cancelledChangesMessage {
-    color: #f44336;
+  #actionButtons {
+    display: flex;
+    justify-content: center;
     margin-top: 1em;
-    font-style: italic;
   }
 
   @media (max-width: 600px) {
@@ -386,6 +386,13 @@
     .valentine-image {
       width: 80px;
       height: 80px;
+    }
+    #actionButtons {
+      flex-direction: column;
+    }
+    #cancelChangesButton {
+      margin-left: 0;
+      margin-top: 0.5em;
     }
   }
 </style>
@@ -454,10 +461,11 @@
     <button class="button" id="addCustomDate">Ajouter Date</button>
     <div id="importantDates"></div>
 
-    <button id="saveChangesButton">Enregistrer les changements</button>
-    <button id="cancelChangesButton">Annuler les changements</button>
+    <div id="actionButtons">
+      <button id="saveChangesButton">Enregistrer les changements</button>
+      <button id="cancelChangesButton">Annuler les changements</button>
+    </div>
     <p id="savedChangesMessage"></p>
-    <p id="cancelledChangesMessage"></p>
   </div>
   
   <div id="photoModal">
@@ -528,33 +536,33 @@
       "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1520183802803-06f731a2059f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1543291436-d24d4aea4f10?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1541959833400-049d37f98ccd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     calm: [
-      "https://images.unsplash.com/photo-1508558936510-0af1e3cccbab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1476611338391-6f395a0b3a25?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1515510911639-3f5786189b54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1518002171953-a080ee817e1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1497561813398-8fcc7a37b567?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1518049362265-d5b2a6467637?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1514539079130-25950c84af65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     passionate: [
-      "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1519670778996-90e1e99c0184?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1519670723427-dabd2215e96f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1529111290557-82f6d5c6cf85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1529697216570-f48ef8f6b2dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+      "https://images.unsplash.com/photo-1522120691812-dcdfb625f397?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     playful: [
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1541959833400-049d37f98ccd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1515890435782-59a5bb6ec191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+      "https://images.unsplash.com/photo-1515890435782-59a5bb6ec191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     thoughtful: [
       "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
@@ -562,130 +570,139 @@
       "https://images.unsplash.com/photo-1502489597346-dad15683d4c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+      "https://images.unsplash.com/photo-1518049362265-d5b2a6467637?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ]
   };
 
-  let currentMood = 'happy';
-  let favoriteQuotes = [];
-
-  let importantDates = [
-    { date: '14/02/2023', event: 'Saint-Valentin' },
-    { date: '23/01/2023', event: 'Notre Amour' },
-    { date: '08/05/2005', event: 'Naissance Avon' },
-    { date: '26/07/2005', event: 'Naissance Yayouille' }
+  const photoAlbum = [
+    { src: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300", alt: "Couple heureux marchant sur la plage au coucher du soleil" },
+    { src: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300", alt: "Couple s'embrassant sous un parapluie sous la pluie" },
+    { src: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300", alt: "Couple partageant un moment intime dans un café" },
+    { src: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300", alt: "Couple riant ensemble dans un champ de fleurs" },
+    { src: "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300", alt: "Couple s'embrassant devant un coucher de soleil spectaculaire" },
+    { src: "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300", alt: "Couple se tenant la main en marchant dans une forêt automnale" }
   ];
 
-  function updateMessage() {
-    const messageElement = document.getElementById('message');
-    const randomIndex = Math.floor(Math.random() * messages.length);
-    messageElement.textContent = messages[randomIndex];
-    gsap.from(messageElement, {duration: 1, opacity: 0, y: 50, ease: "power3.out"});
+  let currentMessageIndex = 0;
+  let currentDreamIndex = 0;
+  let currentQuoteIndex = 0;
+  let favoriteQuotes = [];
+  let importantDates = [
+    { date: "23/01/2023", event: "Notre Amour" },
+    { date: "08/05/2005", event: "Naissance Avon" },
+    { date: "26/07/2005", event: "Naissance Yayouille" }
+  ];
+
+  function displayMessage() {
+    document.getElementById('message').textContent = messages[currentMessageIndex];
+    currentMessageIndex = (currentMessageIndex + 1) % messages.length;
   }
 
-  function updateDream() {
-    const dreamElement = document.getElementById('futureDream');
-    const randomIndex = Math.floor(Math.random() * futureDreams.length);
-    dreamElement.textContent = futureDreams[randomIndex];
-    gsap.from(dreamElement, {duration: 1, opacity: 0, y: 50, ease: "power3.out"});
+  function displayDream() {
+    document.getElementById('futureDream').textContent = futureDreams[currentDreamIndex];
+    currentDreamIndex = (currentDreamIndex + 1) % futureDreams.length;
   }
 
-  function updateQuote() {
-    const quoteElement = document.getElementById('loveQuote');
-    const randomIndex = Math.floor(Math.random() * loveQuotes.length);
-    quoteElement.textContent = loveQuotes[randomIndex];
-    gsap.from(quoteElement, {duration: 1, opacity: 0, y: 50, ease: "power3.out"});
+  function displayQuote() {
+    document.getElementById('loveQuote').textContent = loveQuotes[currentQuoteIndex];
+    currentQuoteIndex = (currentQuoteIndex + 1) % loveQuotes.length;
   }
 
   function addToFavorites() {
-    const currentQuote = document.getElementById('loveQuote').textContent;
+    const currentQuote = loveQuotes[currentQuoteIndex];
     if (!favoriteQuotes.includes(currentQuote)) {
       favoriteQuotes.push(currentQuote);
       updateFavoriteQuotes();
+      saveFavoriteQuotes();
     }
   }
 
   function updateFavoriteQuotes() {
-    const favoriteQuotesElement = document.getElementById('favoriteQuotes');
-    favoriteQuotesElement.innerHTML = '<h2>Citations Favorites</h2>';
+    const favoriteQuotesContainer = document.getElementById('favoriteQuotes');
+    favoriteQuotesContainer.innerHTML = '<h2>Citations Favorites</h2>';
     favoriteQuotes.forEach((quote, index) => {
       const quoteElement = document.createElement('div');
       quoteElement.classList.add('favorite-quote');
       quoteElement.textContent = quote;
-      
       const removeButton = document.createElement('button');
       removeButton.textContent = 'Supprimer';
-      removeButton.classList.add('button');
-      removeButton.addEventListener('click', () => removeFavoriteQuote(index));
-      
+      removeButton.onclick = () => removeFromFavorites(index);
       quoteElement.appendChild(removeButton);
-      favoriteQuotesElement.appendChild(quoteElement);
+      favoriteQuotesContainer.appendChild(quoteElement);
     });
   }
 
-  function removeFavoriteQuote(index) {
+  function removeFromFavorites(index) {
     favoriteQuotes.splice(index, 1);
     updateFavoriteQuotes();
+    saveFavoriteQuotes();
   }
 
-  function updateMood() {
-    const body = document.body;
-    body.classList.remove(currentMood);
-    currentMood = document.getElementById('moodSelector').value;
-    body.classList.add(currentMood);
-
-    const valentineImages = document.querySelectorAll('.valentine-image');
-    valentineImages.forEach((img, index) => {
-      img.src = moodImages[currentMood][index];
-    });
-
-    gsap.to('.container', {duration: 1, backgroundColor: `var(--${currentMood}-bg)`, ease: "power3.inOut"});
-    gsap.to('h1, h2, .heart', {duration: 1, color: `var(--${currentMood}-color)`, ease: "power3.inOut"});
+  function saveFavoriteQuotes() {
+    localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotes));
   }
 
-  function displayImportantDates() {
-    const datesContainer = document.getElementById('importantDates');
-    datesContainer.innerHTML = '';
-    importantDates.forEach((item, index) => {
+  function loadFavoriteQuotes() {
+    const savedQuotes = localStorage.getItem('favoriteQuotes');
+    if (savedQuotes) {
+      favoriteQuotes = JSON.parse(savedQuotes);
+      updateFavoriteQuotes();
+    }
+  }
+
+  function updateImportantDates() {
+    const importantDatesContainer = document.getElementById('importantDates');
+    importantDatesContainer.innerHTML = '';
+    importantDates.forEach((dateObj, index) => {
       const dateElement = document.createElement('div');
-      dateElement.textContent = `${item.date} - ${item.event}`;
-      
+      dateElement.textContent = `${dateObj.date} - ${dateObj.event}`;
       const removeButton = document.createElement('button');
       removeButton.textContent = 'Supprimer';
-      removeButton.classList.add('button');
-      removeButton.addEventListener('click', () => removeImportantDate(index));
-      
+      removeButton.onclick = () => removeImportantDate(index);
       dateElement.appendChild(removeButton);
-      datesContainer.appendChild(dateElement);
+      importantDatesContainer.appendChild(dateElement);
     });
   }
 
   function addImportantDate() {
     const input = document.getElementById('customDate');
-    const [date, event] = input.value.split(' - ');
-    if (date && event) {
+    const datePattern = /^(\d{2}\/\d{2}\/\d{4}) - (.+)$/;
+    const match = input.value.match(datePattern);
+    if (match) {
+      const [_, date, event] = match;
       importantDates.push({ date, event });
-      displayImportantDates();
+      updateImportantDates();
+      saveImportantDates();
       input.value = '';
+    } else {
+      alert('Format incorrect. Utilisez le format JJ/MM/AAAA - Événement');
     }
   }
 
   function removeImportantDate(index) {
     importantDates.splice(index, 1);
-    displayImportantDates();
+    updateImportantDates();
+    saveImportantDates();
+  }
+
+  function saveImportantDates() {
+    localStorage.setItem('importantDates', JSON.stringify(importantDates));
+  }
+
+  function loadImportantDates() {
+    const savedDates = localStorage.getItem('importantDates');
+    if (savedDates) {
+      importantDates = JSON.parse(savedDates);
+      updateImportantDates();
+    }
   }
 
   function saveChanges() {
-    const data = {
-      messages: messages,
-      futureDreams: futureDreams,
-      loveQuotes: loveQuotes,
-      favoriteQuotes: favoriteQuotes,
-      importantDates: importantDates,
-      currentMood: currentMood
-    };
-    localStorage.setItem('lovePageData', JSON.stringify(data));
-    
+    saveMessages();
+    saveFutureDreams();
+    saveLoveQuotes();
+    saveFavoriteQuotes();
+    saveImportantDates();
     const savedChangesMessage = document.getElementById('savedChangesMessage');
     savedChangesMessage.textContent = 'Changements enregistrés avec succès !';
     setTimeout(() => {
@@ -693,186 +710,191 @@
     }, 3000);
   }
 
-  let originalData = {};
-
-  function saveOriginalData() {
-    originalData = {
-      messages: [...messages],
-      futureDreams: [...futureDreams],
-      loveQuotes: [...loveQuotes],
-      favoriteQuotes: [...favoriteQuotes],
-      importantDates: JSON.parse(JSON.stringify(importantDates)),
-      currentMood: currentMood
-    };
-  }
-
   function cancelChanges() {
-    messages = [...originalData.messages];
-    futureDreams = [...originalData.futureDreams];
-    loveQuotes = [...originalData.loveQuotes];
-    favoriteQuotes = [...originalData.favoriteQuotes];
-    importantDates = JSON.parse(JSON.stringify(originalData.importantDates));
-    currentMood = originalData.currentMood;
-
-    updateMessage();
-    updateDream();
-    updateQuote();
-    updateFavoriteQuotes();
-    displayImportantDates();
-    document.getElementById('moodSelector').value = currentMood;
-    updateMood();
-
-    const cancelledChangesMessage = document.getElementById('cancelledChangesMessage');
-    cancelledChangesMessage.textContent = 'Changements annulés avec succès !';
+    loadSavedChanges();
+    const savedChangesMessage = document.getElementById('savedChangesMessage');
+    savedChangesMessage.textContent = 'Changements annulés. La page a été restaurée à son état précédent.';
     setTimeout(() => {
-      cancelledChangesMessage.textContent = '';
+      savedChangesMessage.textContent = '';
     }, 3000);
   }
 
+  function saveMessages() {
+    localStorage.setItem('messages', JSON.stringify(messages));
+  }
+
+  function saveFutureDreams() {
+    localStorage.setItem('futureDreams', JSON.stringify(futureDreams));
+  }
+
+  function saveLoveQuotes() {
+    localStorage.setItem('loveQuotes', JSON.stringify(loveQuotes));
+  }
+
   function loadSavedChanges() {
-    const savedData = localStorage.getItem('lovePageData');
-    if (savedData) {
-      const parsedData = JSON.parse(savedData);
-      messages = parsedData.messages;
-      futureDreams = parsedData.futureDreams;
-      loveQuotes = parsedData.loveQuotes;
-      favoriteQuotes = parsedData.favoriteQuotes;
-      importantDates = parsedData.importantDates;
-      currentMood = parsedData.currentMood;
+    loadMessages();
+    loadFutureDreams();
+    loadLoveQuotes();
+    loadFavoriteQuotes();
+    loadImportantDates();
+    displayMessage();
+    displayDream();
+    displayQuote();
+    updateFavoriteQuotes();
+    updateImportantDates();
+  }
 
-      updateMessage();
-      updateDream();
-      updateQuote();
-      updateFavoriteQuotes();
-      displayImportantDates();
-      document.getElementById('moodSelector').value = currentMood;
-      updateMood();
-
-      saveOriginalData();
+  function loadMessages() {
+    const savedMessages = localStorage.getItem('messages');
+    if (savedMessages) {
+      messages = JSON.parse(savedMessages);
     }
   }
 
-  document.getElementById('nextMessageButton').addEventListener('click', updateMessage);
-  document.getElementById('nextDreamButton').addEventListener('click', updateDream);
-  document.getElementById('nextQuote').addEventListener('click', updateQuote);
-  document.getElementById('addToFavorites').addEventListener('click', addToFavorites);
-  document.getElementById('moodSelector').addEventListener('change', updateMood);
-  document.getElementById('addCustomMessage').addEventListener('click', () => {
+  function loadFutureDreams() {
+    const savedDreams = localStorage.getItem('futureDreams');
+    if (savedDreams) {
+      futureDreams = JSON.parse(savedDreams);
+    }
+  }
+
+  function loadLoveQuotes() {
+    const savedQuotes = localStorage.getItem('loveQuotes');
+    if (savedQuotes) {
+      loveQuotes = JSON.parse(savedQuotes);
+    }
+  }
+
+  function changeMood() {
+    const mood = document.getElementById('moodSelector').value;
+    document.body.className = mood;
+    updateValentineImages(mood);
+  }
+
+  function updateValentineImages(mood) {
+    const images = document.querySelectorAll('.valentine-image');
+    const moodImages = moodImages[mood];
+    images.forEach((img, index) => {
+      img.src = moodImages[index];
+      img.alt = `Image d'amour ${index + 1} pour l'ambiance ${mood}`;
+    });
+  }
+
+  function addCustomMessage() {
     const customMessage = document.getElementById('customMessage').value;
     if (customMessage) {
       messages.push(customMessage);
       document.getElementById('customMessage').value = '';
-      updateMessage();
+      saveMessages();
     }
-  });
-  document.getElementById('addCustomDate').addEventListener('click', addImportantDate);
+  }
 
-  const saveChangesButton = document.getElementById('saveChangesButton');
-  saveChangesButton.addEventListener('click', saveChanges);
+  function startCountdown() {
+    const targetDate = new Date("2024-02-14T00:00:00").getTime();
+    
+    const countdownTimer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById("countdown").innerHTML = `Compte à rebours pour la Saint-Valentin : ${days}j ${hours}h ${minutes}m ${seconds}s`;
+      
+      if (distance < 0) {
+        clearInterval(countdownTimer);
+        document.getElementById("countdown").innerHTML = "Joyeuse Saint-Valentin !";
+      }
+    }, 1000);
+  }
 
-  const cancelChangesButton = document.getElementById('cancelChangesButton');
-  cancelChangesButton.addEventListener('click', cancelChanges);
-
-  const tabs = document.querySelectorAll('.tab');
-  const tabContents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tabContents.forEach(content => content.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(`${tab.dataset.tab}Tab`).classList.add('active');
+  function createPhotoAlbum() {
+    const photoAlbumContainer = document.querySelector('.photo-album');
+    photoAlbum.forEach(photo => {
+      const photoElement = document.createElement('div');
+      photoElement.classList.add('photo');
+      photoElement.style.backgroundImage = `url(${photo.src})`;
+      photoElement.setAttribute('data-src', photo.src);
+      photoElement.setAttribute('data-alt', photo.alt);
+      photoElement.addEventListener('click', openModal);
+      photoAlbumContainer.appendChild(photoElement);
     });
-  });
+  }
 
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
+  function openModal(event) {
+    const modal = document.getElementById('photoModal');
+    const modalImg = document.getElementById('modalImage');
+    modal.style.display = "block";
+    modalImg.src = event.target.getAttribute('data-src');
+    modalImg.alt = event.target.getAttribute('data-alt');
+  }
 
-  function drawHeart(x, y, size, color) {
-    ctx.fillStyle = color;
+  window.onclick = function(event) {
+    const modal = document.getElementById('photoModal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  function drawHeart() {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
     ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.bezierCurveTo(x, y - size / 2, x - size, y - size / 2, x - size, y);
-    ctx.bezierCurveTo(x - size, y + size / 3, x, y + size, x, y + size);
-    ctx.bezierCurveTo(x, y + size, x + size, y + size / 3, x + size, y);
-    ctx.bezierCurveTo(x + size, y - size / 2, x, y - size / 2, x, y);
-    ctx.closePath();
+    ctx.moveTo(75, 40);
+    ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+    ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+    ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
+    ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+    ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+    ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
+    
+    ctx.fillStyle = 'red';
     ctx.fill();
   }
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const now = Date.now() / 1000;
-    for (let i = 0; i < 5; i++) {
-      const x = canvas.width / 2 + Math.cos(now + i) * 50;
-      const y = canvas.height / 2 + Math.sin(now + i) * 50;
-      const size = 20 + Math.sin(now * 2 + i) * 10;
-      const hue = (now * 50 + i * 60) % 360;
-      drawHeart(x, y, size, `hsl(${hue}, 100%, 50%)`);
-    }
-    requestAnimationFrame(animate);
-  }
+  function initializeTabs() {
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-  animate();
-
-  const photoAlbum = document.querySelector('.photo-album');
-  const modal = document.getElementById('photoModal');
-  const modalImg = document.getElementById('modalImage');
-
-  const photos = [
-    { url: 'https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300', caption: 'Notre premier rendez-vous' },
-    { url: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300', caption: 'Notre voyage à Paris' },
-    { url: 'https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300', caption: 'Notre anniversaire' },
-    { url: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300', caption: 'Notre mariage' },
-    { url: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300', caption: 'Notre lune de miel' },
-    { url: 'https://images.unsplash.com/photo-1567213446024-9b02830d6afd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300', caption: 'Notre nouvelle maison' }
-  ];
-
-  photos.forEach(photo => {
-    const photoElement = document.createElement('div');
-    photoElement.classList.add('photo');
-    photoElement.style.backgroundImage = `url(${photo.url})`;
-    photoElement.setAttribute('data-caption', photo.caption);
-    photoElement.addEventListener('click', () => {
-      modalImg.src = photo.url;
-      modalImg.alt = photo.caption;
-      modal.style.display = 'block';
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.getAttribute('data-tab');
+        
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.getElementById(`${tabId}Tab`).classList.add('active');
+      });
     });
-    photoAlbum.appendChild(photoElement);
-  });
-
-  modal.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
-
-  function updateCountdown() {
-    const now = new Date();
-    const nextAnniversary = new Date(now.getFullYear(), 0, 23); // 23 janvier
-    if (now > nextAnniversary) {
-      nextAnniversary.setFullYear(nextAnniversary.getFullYear() + 1);
-    }
-    const difference = nextAnniversary - now;
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-    document.getElementById('countdown').innerHTML = `Prochain anniversaire dans : ${days}j ${hours}h ${minutes}m ${seconds}s`;
   }
 
-  setInterval(updateCountdown, 1000);
+  document.getElementById('nextMessageButton').addEventListener('click', displayMessage);
+  document.getElementById('nextDreamButton').addEventListener('click', displayDream);
+  document.getElementById('nextQuote').addEventListener('click', displayQuote);
+  document.getElementById('addToFavorites').addEventListener('click', addToFavorites);
+  document.getElementById('moodSelector').addEventListener('change', changeMood);
+  document.getElementById('addCustomMessage').addEventListener('click', addCustomMessage);
+  document.getElementById('addCustomDate').addEventListener('click', addImportantDate);
+  document.getElementById('saveChangesButton').addEventListener('click', saveChanges);
+  document.getElementById('cancelChangesButton').addEventListener('click', cancelChanges);
 
-  window.addEventListener('load', () => {
+  window.onload = function() {
+    displayMessage();
+    displayDream();
+    displayQuote();
+    loadFavoriteQuotes();
+    loadImportantDates();
+    startCountdown();
+    createPhotoAlbum();
+    drawHeart();
+    initializeTabs();
     loadSavedChanges();
-    saveOriginalData();
-    updateMessage();
-    updateDream();
-    updateQuote();
-    updateFavoriteQuotes();
-    displayImportantDates();
-    updateMood();
-    updateCountdown();
-  });
+  };
 </script>
 </body>
 </html>
