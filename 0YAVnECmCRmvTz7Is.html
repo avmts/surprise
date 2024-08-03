@@ -1,0 +1,580 @@
+<html><head><base href="https://websim.ai/platform/love/" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notre Amour en Couleurs</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+    min-height: 100vh;
+  }
+  .container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 2em;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  h1, h2 {
+    color: #ff6b6b;
+    margin-bottom: 0.5em;
+  }
+  h1 { font-size: 2.5em; }
+  h2 { font-size: 1.8em; }
+  p {
+    color: #4a4a4a;
+    font-size: 1.2em;
+    line-height: 1.6;
+  }
+  .heart {
+    font-size: 5em;
+    color: #ff6b6b;
+    animation: heartbeat 1s infinite;
+  }
+  @keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  .message, .future-dream {
+    margin-top: 2em;
+    font-style: italic;
+    color: #777;
+  }
+  .button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1em;
+    margin-right: 0.5em;
+  }
+  .button:hover {
+    background-color: #ff4757;
+  }
+  #canvas {
+    margin-top: 2em;
+    border: 2px solid #ff6b6b;
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+  }
+  #messageList {
+    margin-top: 2em;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 1em;
+    border-radius: 5px;
+  }
+  .message-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+    flex-wrap: wrap;
+  }
+  .like-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  .like-button:hover {
+    background-color: #45a049;
+  }
+  .liked {
+    background-color: #ff6b6b;
+  }
+  #customMessage, #customDate {
+    width: 100%;
+    padding: 10px;
+    margin-top: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  #addCustomMessage, #addCustomDate {
+    margin-top: 0.5em;
+    width: 100%;
+  }
+  #moodSelector {
+    margin-top: 1em;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  #countdown {
+    font-size: 1.5em;
+    margin-top: 1em;
+    color: #ff6b6b;
+  }
+  .photo-album {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2em;
+  }
+  .photo {
+    width: calc(33.33% - 10px);
+    padding-bottom: calc(33.33% - 10px);
+    margin: 5px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .photo:hover {
+    transform: scale(1.1);
+  }
+  #photoModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+  }
+  #modalImage {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    max-height: 80%;
+    border-radius: 10px;
+  }
+  #loveQuote {
+    font-style: italic;
+    color: #ff6b6b;
+    margin-top: 1em;
+  }
+  .valentine-images {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 1em;
+  }
+  .valentine-image {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .valentine-image:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 1em;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    .button {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 0.5em;
+    }
+    .photo {
+      width: calc(50% - 10px);
+      padding-bottom: calc(50% - 10px);
+    }
+    .valentine-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Notre Amour en Couleurs</h1>
+    <div class="heart">❤️</div>
+    <p>Chaque jour à tes côtés est une nouvelle aventure.</p>
+    <p class="message" id="message"></p>
+    <p class="future-dream" id="futureDream"></p>
+    <button class="button" id="nextMessageButton">Message Suivant</button>
+    <button class="button" id="nextDreamButton">Rêve Futur Suivant</button>
+    <canvas id="canvas" width="300" height="200"></canvas>
+    <div id="messageList"></div>
+    
+    <input type="text" id="customMessage" placeholder="Écrivez votre propre message d'amour...">
+    <button class="button" id="addCustomMessage">Ajouter Message</button>
+    
+    <select id="moodSelector">
+      <option value="happy">Joyeux</option>
+      <option value="romantic">Romantique</option>
+      <option value="nostalgic">Nostalgique</option>
+      <option value="excited">Excité</option>
+    </select>
+    
+    <div id="countdown"></div>
+    <div class="valentine-images">
+      <img src="https://websim.ai/platform/love/heart_balloons.svg" alt="Ballons en forme de cœur" class="valentine-image">
+      <img src="https://websim.ai/platform/love/chocolate_box.svg" alt="Boîte de chocolats" class="valentine-image">
+      <img src="https://websim.ai/platform/love/rose_bouquet.svg" alt="Bouquet de roses" class="valentine-image">
+      <img src="https://websim.ai/platform/love/love_letter.svg" alt="Lettre d'amour" class="valentine-image">
+    </div>
+    
+    <div class="photo-album">
+      <!-- Les photos seront ajoutées dynamiquement ici -->
+    </div>
+
+    <h2>Citation d'Amour du Jour</h2>
+    <p id="loveQuote"></p>
+
+    <h2>Calendrier des Dates Importantes</h2>
+    <input type="text" id="customDate" placeholder="Ajoutez une date importante (JJ/MM/AAAA - Événement)">
+    <button class="button" id="addCustomDate">Ajouter Date</button>
+    <div id="importantDates"></div>
+  </div>
+  
+  <div id="photoModal">
+    <img id="modalImage" src="" alt="Photo agrandie">
+  </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script>
+  const messages = [
+    "Tu illumines ma vie comme le soleil illumine le monde.",
+    "Ton sourire est la plus belle chose que je puisse voir chaque jour.",
+    "Je t'aime plus que les mots ne peuvent l'exprimer.",
+    "Tu es ma meilleure amie, mon âme sœur, et mon amour éternel.",
+    "Chaque moment passé avec toi est un trésor que je chéris.",
+    "Tu me rends meilleur chaque jour, et je suis reconnaissant pour ça.",
+    "Notre amour est une histoire que je veux continuer à écrire pour toujours."
+  ];
+
+  const futureDreams = [
+    "Construire notre maison de rêve ensemble au bord de la mer.",
+    "Voyager autour du monde, main dans la main, découvrant de nouvelles cultures.",
+    "Fonder une famille unie et heureuse, remplie d'amour et de rires.",
+    "Créer un jardin luxuriant où nous cultiverons nos propres fruits et légumes.",
+    "Ouvrir un petit café où nous accueillerons les gens avec notre amour et notre passion.",
+    "Prendre notre retraite dans un chalet en montagne, entourés de nature.",
+    "Apprendre une nouvelle langue ensemble et visiter le pays où elle est parlée."
+  ];
+
+  const loveQuotes = [
+    "L'amour ne se voit pas avec les yeux, mais avec le cœur. - William Shakespeare",
+    "Je t'aime non seulement pour ce que tu es, mais pour ce que je suis quand je suis avec toi. - Roy Croft",
+    "L'amour est composé d'une seule âme habitant deux corps. - Aristote",
+    "Le plus grand bonheur de la vie, c'est d'être convaincu qu'on est aimé. - Victor Hugo",
+    "Aimer, ce n'est pas se regarder l'un l'autre, c'est regarder ensemble dans la même direction. - Antoine de Saint-Exupéry"
+  ];
+
+  let currentMessageIndex = 0;
+  let currentDreamIndex = 0;
+  const messageElement = document.getElementById('message');
+  const futureDreamElement = document.getElementById('futureDream');
+  const nextMessageButton = document.getElementById('nextMessageButton');
+  const nextDreamButton = document.getElementById('nextDreamButton');
+  const messageList = document.getElementById('messageList');
+  const customMessageInput = document.getElementById('customMessage');
+  const addCustomMessageButton = document.getElementById('addCustomMessage');
+  const moodSelector = document.getElementById('moodSelector');
+  const countdownElement = document.getElementById('countdown');
+  const photoAlbum = document.querySelector('.photo-album');
+  const photoModal = document.getElementById('photoModal');
+  const modalImage = document.getElementById('modalImage');
+  const loveQuoteElement = document.getElementById('loveQuote');
+  const customDateInput = document.getElementById('customDate');
+  const addCustomDateButton = document.getElementById('addCustomDate');
+  const importantDatesElement = document.getElementById('importantDates');
+
+  function displayNextMessage() {
+    gsap.to(messageElement, {
+      opacity: 0,
+      duration: 0.5,
+      onComplete: () => {
+        messageElement.textContent = messages[currentMessageIndex];
+        gsap.to(messageElement, {opacity: 1, duration: 0.5});
+        addMessageToList(messages[currentMessageIndex]);
+        currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+      }
+    });
+  }
+
+  function displayNextDream() {
+    gsap.to(futureDreamElement, {
+      opacity: 0,
+      duration: 0.5,
+      onComplete: () => {
+        futureDreamElement.textContent = futureDreams[currentDreamIndex];
+        gsap.to(futureDreamElement, {opacity: 1, duration: 0.5});
+        currentDreamIndex = (currentDreamIndex + 1) % futureDreams.length;
+        drawDream();
+      }
+    });
+  }
+
+  function addMessageToList(message) {
+    const messageItem = document.createElement('div');
+    messageItem.className = 'message-item';
+    messageItem.innerHTML = `
+      <span>${message}</span>
+      <button class="like-button">J'aime</button>
+    `;
+    messageList.appendChild(messageItem);
+
+    const likeButton = messageItem.querySelector('.like-button');
+    likeButton.addEventListener('click', function() {
+      this.classList.toggle('liked');
+      this.textContent = this.classList.contains('liked') ? 'Aimé' : 'J\'aime';
+    });
+  }
+
+  function addCustomMessage() {
+    const customMessage = customMessageInput.value.trim();
+    if (customMessage) {
+      addMessageToList(customMessage);
+      customMessageInput.value = '';
+    }
+  }
+
+  function updateMood() {
+    const mood = moodSelector.value;
+    document.body.className = mood;
+    // Vous pouvez ajouter plus de logique ici pour changer l'apparence en fonction de l'humeur
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const valentinesDay = new Date(now.getFullYear(), 1, 14); // 14 février
+    if (now > valentinesDay) {
+      valentinesDay.setFullYear(valentinesDay.getFullYear() + 1);
+    }
+    const diff = valentinesDay - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdownElement.textContent = `Temps jusqu'à la Saint-Valentin : ${days}j ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  function createPhotoAlbum() {
+    const photoUrls = [
+      'https://example.com/photo1.jpg',
+      'https://example.com/photo2.jpg',
+      'https://example.com/photo3.jpg',
+      'https://example.com/photo4.jpg',
+      'https://example.com/photo5.jpg',
+      'https://example.com/photo6.jpg'
+    ];
+
+    photoUrls.forEach((url, index) => {
+      const photo = document.createElement('div');
+      photo.className = 'photo';
+      photo.style.backgroundImage = `url(${url})`;
+      photo.addEventListener('click', () => openModal(url));
+      photoAlbum.appendChild(photo);
+    });
+  }
+
+  function openModal(url) {
+    modalImage.src = url;
+    photoModal.style.display = 'flex';
+  }
+
+  function displayRandomLoveQuote() {
+    const randomIndex = Math.floor(Math.random() * loveQuotes.length);
+    loveQuoteElement.textContent = loveQuotes[randomIndex];
+  }
+
+  function addCustomDate() {
+    const customDate = customDateInput.value.trim();
+    if (customDate) {
+      const dateItem = document.createElement('p');
+      dateItem.textContent = customDate;
+      importantDatesElement.appendChild(dateItem);
+      customDateInput.value = '';
+    }
+  }
+
+  nextMessageButton.addEventListener('click', displayNextMessage);
+  nextDreamButton.addEventListener('click', displayNextDream);
+  addCustomMessageButton.addEventListener('click', addCustomMessage);
+  moodSelector.addEventListener('change', updateMood);
+  photoModal.addEventListener('click', () => photoModal.style.display = 'none');
+  addCustomDateButton.addEventListener('click', addCustomDate);
+
+  // Afficher le premier message et rêve automatiquement
+  displayNextMessage();
+  displayNextDream();
+
+  // Mettre à jour le compte à rebours toutes les secondes
+  setInterval(updateCountdown, 1000);
+
+  // Créer l'album photo
+  createPhotoAlbum();
+
+  // Afficher une citation d'amour aléatoire
+  displayRandomLoveQuote();
+
+  // Animation d'entrée initiale
+  gsap.from('.container', {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: 'power3.out'
+  });
+
+  // Animation continue du cœur
+  gsap.to('.heart', {
+    scale: 1.1,
+    duration: 0.5,
+    yoyo: true,
+    repeat: -1,
+    ease: 'power1.inOut'
+  });
+
+  // Canvas pour illustrer les rêves futurs
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+
+  function drawDream() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = getRandomColor();
+    ctx.strokeStyle = getRandomColor();
+    ctx.lineWidth = 2;
+
+    // Dessiner une forme abstraite pour représenter le rêve futur
+    ctx.beginPath();
+    ctx.moveTo(150, 100);
+    for (let i = 0; i < 8; i++) {
+      ctx.quadraticCurveTo(
+        Math.random() * canvas.width,
+        Math.random() * canvas.height,
+        Math.random() * canvas.width,
+        Math.random() * canvas.height
+      );
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+
+    // Ajouter des étoiles pour symboliser les rêves
+    for (let i = 0; i < 20; i++) {
+      drawStar(Math.random() * canvas.width, Math.random() * canvas.height, 5, 2, 4);
+    }
+  }
+
+  function drawStar(cx, cy, spikes, outerRadius, innerRadius) {
+    let rot = Math.PI / 2 * 3;
+    let x = cx;
+    let y = cy;
+    let step = Math.PI / spikes;
+
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - outerRadius);
+    for (let i = 0; i < spikes; i++) {
+      x = cx + Math.cos(rot) * outerRadius;
+      y = cy + Math.sin(rot) * outerRadius;
+      ctx.lineTo(x, y);
+      rot += step;
+
+      x = cx + Math.cos(rot) * innerRadius;
+      y = cy + Math.sin(rot) * innerRadius;
+      ctx.lineTo(x, y);
+      rot += step;
+    }
+    ctx.lineTo(cx, cy - outerRadius);
+    ctx.closePath();
+    ctx.fillStyle = 'white';
+    ctx.fill();
+  }
+
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  drawDream();
+
+  // Fonction pour ajuster la taille du canvas
+  function resizeCanvas() {
+    const container = document.querySelector('.container');
+    const containerWidth = container.offsetWidth;
+    canvas.width = containerWidth - 40; // 40px pour le padding
+    canvas.height = canvas.width * 2/3; // Maintenir un ratio de 3:2
+    drawDream(); // Redessiner après le redimensionnement
+  }
+
+  // Appeler resizeCanvas au chargement et au redimensionnement de la fenêtre
+  window.addEventListener('load', resizeCanvas);
+  window.addEventListener('resize', resizeCanvas);
+
+  // Fonction pour vérifier si un élément est visible dans la fenêtre
+  function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Fonction pour animer les éléments lorsqu'ils deviennent visibles
+  function animateOnScroll() {
+    const elements = document.querySelectorAll('.container > *');
+    elements.forEach((element) => {
+      if (isElementInViewport(element) && !element.classList.contains('animated')) {
+        gsap.from(element, {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          ease: 'power3.out'
+        });
+        element.classList.add('animated');
+      }
+    });
+  }
+
+  // Ajouter l'écouteur d'événement pour l'animation au défilement
+  window.addEventListener('scroll', animateOnScroll);
+  // Appeler une fois au chargement pour animer les éléments initialement visibles
+  animateOnScroll();
+
+  // Animation des images de la Saint-Valentin
+  gsap.from('.valentine-image', {
+    scale: 0,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.2,
+    ease: 'back.out(1.7)',
+    scrollTrigger: {
+      trigger: '.valentine-images',
+      start: 'top 80%',
+    }
+  });
+</script>
+</body>
+</html>
