@@ -322,6 +322,28 @@
     transform: scale(1.02);
   }
 
+  #saveChangesButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1em;
+  }
+
+  #saveChangesButton:hover {
+    background-color: #45a049;
+  }
+
+  #savedChangesMessage {
+    color: #4CAF50;
+    margin-top: 1em;
+    font-style: italic;
+  }
+
   @media (max-width: 600px) {
     .container {
       padding: 1em;
@@ -408,6 +430,9 @@
     <input type="text" id="customDate" placeholder="Ajoutez une date importante (JJ/MM/AAAA - Événement)">
     <button class="button" id="addCustomDate">Ajouter Date</button>
     <div id="importantDates"></div>
+
+    <button id="saveChangesButton">Enregistrer les changements</button>
+    <p id="savedChangesMessage"></p>
   </div>
   
   <div id="photoModal">
@@ -480,39 +505,39 @@
       "https://images.unsplash.com/photo-1520183802803-06f731a2059f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+      "https://images.unsplash.com/photo-1518895312237-a9e23508077d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     calm: [
-      "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&ixid=M3wxM3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1476611338391-6f395a0e4805?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+      "https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1505275350441-83dcda8eeef5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1502472584811-0a2f2feb8968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     passionate: [
       "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1515890435782-59a5bb6ec191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1518895312237-a9e23508077d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     playful: [
       "https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1508176967528-7ad7c511bf21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1515890435782-59a5bb6ec191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1518895312237-a9e23508077d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     thoughtful: [
       "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1502489597346-dad15683d4c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
       "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
-      "https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
+      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ]
   };
 
@@ -520,41 +545,15 @@
   let currentMessageIndex = 0;
   let currentDreamIndex = 0;
   let currentQuoteIndex = 0;
-  const favoriteQuotes = [];
-
-  const messageElement = document.getElementById('message');
-  const futureDreamElement = document.getElementById('futureDream');
-  const nextMessageButton = document.getElementById('nextMessageButton');
-  const nextDreamButton = document.getElementById('nextDreamButton');
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
-  const messageList = document.getElementById('messageList');
-  const customMessageInput = document.getElementById('customMessage');
-  const addCustomMessageButton = document.getElementById('addCustomMessage');
-  const moodSelector = document.getElementById('moodSelector');
-  const countdownElement = document.getElementById('countdown');
-  const valentineImages = document.querySelectorAll('.valentine-image');
-  const photoAlbum = document.querySelector('.photo-album');
-  const photoModal = document.getElementById('photoModal');
-  const modalImage = document.getElementById('modalImage');
-  const loveQuoteElement = document.getElementById('loveQuote');
-  const nextQuoteButton = document.getElementById('nextQuote');
-  const addToFavoritesButton = document.getElementById('addToFavorites');
-  const favoriteQuotesContainer = document.getElementById('favoriteQuotes');
-  const tabButtons = document.querySelectorAll('.tab');
-  const tabContents = document.querySelectorAll('.tab-content');
-  const importantDates = [
-    { date: '14/02/2024', event: 'Saint-Valentin' },
-    { date: '01/01/2024', event: 'Nouvel An' },
-    { date: '23/01/2023', event: 'Notre Amour' },
-    { date: '08/05/2005', event: 'Naissance Avon' },
-    { date: '26/07/2005', event: 'Naissance Yayouille' }
+  let favoriteQuotes = [];
+  let importantDates = [
+    { date: "23/01/2023", event: "Notre Amour" },
+    { date: "08/05/2005", event: "Naissance Avon" },
+    { date: "26/07/2005", event: "Naissance Yayouille" }
   ];
-  const importantDatesContainer = document.getElementById('importantDates');
-  const customDateInput = document.getElementById('customDate');
-  const addCustomDateButton = document.getElementById('addCustomDate');
 
   function updateMessage() {
+    const messageElement = document.getElementById('message');
     gsap.to(messageElement, { opacity: 0, duration: 0.5, onComplete: () => {
       messageElement.textContent = messages[currentMessageIndex];
       gsap.to(messageElement, { opacity: 1, duration: 0.5 });
@@ -563,96 +562,19 @@
   }
 
   function updateDream() {
-    gsap.to(futureDreamElement, { opacity: 0, duration: 0.5, onComplete: () => {
-      futureDreamElement.textContent = futureDreams[currentDreamIndex];
-      gsap.to(futureDreamElement, { opacity: 1, duration: 0.5 });
+    const dreamElement = document.getElementById('futureDream');
+    gsap.to(dreamElement, { opacity: 0, duration: 0.5, onComplete: () => {
+      dreamElement.textContent = futureDreams[currentDreamIndex];
+      gsap.to(dreamElement, { opacity: 1, duration: 0.5 });
     }});
     currentDreamIndex = (currentDreamIndex + 1) % futureDreams.length;
   }
 
-  function drawHeart() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#ff6b6b';
-    ctx.beginPath();
-    ctx.moveTo(150, 100);
-    ctx.bezierCurveTo(150, 80, 130, 50, 100, 50);
-    ctx.bezierCurveTo(60, 50, 50, 90, 50, 100);
-    ctx.bezierCurveTo(50, 140, 90, 180, 150, 220);
-    ctx.bezierCurveTo(210, 180, 250, 140, 250, 100);
-    ctx.bezierCurveTo(250, 90, 240, 50, 200, 50);
-    ctx.bezierCurveTo(170, 50, 150, 80, 150, 100);
-    ctx.fill();
-  }
-
-  function addMessageToList(message, customMessage = false) {
-    const li = document.createElement('div');
-    li.classList.add('message-item');
-    li.innerHTML = `
-      <span>${message}</span>
-      <button class="like-button">❤️</button>
-    `;
-    if (customMessage) {
-      li.style.fontStyle = 'italic';
-    }
-    messageList.appendChild(li);
-    
-    const likeButton = li.querySelector('.like-button');
-    likeButton.addEventListener('click', () => {
-      likeButton.classList.toggle('liked');
-    });
-    
-    gsap.from(li, { opacity: 0, y: 20, duration: 0.5 });
-  }
-
-  function updateMood() {
-    const newMood = moodSelector.value;
-    document.body.className = newMood;
-    currentMood = newMood;
-    updateImages();
-  }
-
-  function updateCountdown() {
-    const now = new Date();
-    const valentine = new Date(now.getFullYear(), 1, 14);
-    if (now > valentine) {
-      valentine.setFullYear(valentine.getFullYear() + 1);
-    }
-    const diff = valentine - now;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    
-    countdownElement.textContent = `Temps restant jusqu'à la Saint-Valentin : ${days}j ${hours}h ${minutes}m ${seconds}s`;
-  }
-
-  function updateImages() {
-    const images = moodImages[currentMood];
-    valentineImages.forEach((img, index) => {
-      gsap.to(img, { opacity: 0, duration: 0.5, onComplete: () => {
-        img.src = images[index];
-        gsap.to(img, { opacity: 1, duration: 0.5 });
-      }});
-    });
-    
-    photoAlbum.innerHTML = '';
-    images.forEach(src => {
-      const photo = document.createElement('div');
-      photo.classList.add('photo');
-      photo.style.backgroundImage = `url(${src})`;
-      photo.addEventListener('click', () => {
-        modalImage.src = src;
-        photoModal.style.display = 'flex';
-        gsap.from(modalImage, { scale: 0.8, opacity: 0, duration: 0.5 });
-      });
-      photoAlbum.appendChild(photo);
-    });
-  }
-
   function updateQuote() {
-    gsap.to(loveQuoteElement, { opacity: 0, duration: 0.5, onComplete: () => {
-      loveQuoteElement.textContent = loveQuotes[currentQuoteIndex];
-      gsap.to(loveQuoteElement, { opacity: 1, duration: 0.5 });
+    const quoteElement = document.getElementById('loveQuote');
+    gsap.to(quoteElement, { opacity: 0, duration: 0.5, onComplete: () => {
+      quoteElement.textContent = loveQuotes[currentQuoteIndex];
+      gsap.to(quoteElement, { opacity: 1, duration: 0.5 });
     }});
     currentQuoteIndex = (currentQuoteIndex + 1) % loveQuotes.length;
   }
@@ -666,8 +588,9 @@
   }
 
   function updateFavoriteQuotes() {
-    favoriteQuotesContainer.innerHTML = '';
-    favoriteQuotes.forEach(quote => {
+    const favoriteQuotesContainer = document.getElementById('favoriteQuotes');
+    favoriteQuotesContainer.innerHTML = '<h2>Citations Favorites</h2>';
+    favoriteQuotes.forEach((quote, index) => {
       const quoteElement = document.createElement('div');
       quoteElement.classList.add('favorite-quote');
       quoteElement.textContent = quote;
@@ -675,17 +598,129 @@
     });
   }
 
-  function displayImportantDates() {
-    importantDatesContainer.innerHTML = '';
-    importantDates.forEach(date => {
-      const dateElement = document.createElement('div');
-      dateElement.textContent = `${date.date} - ${date.event}`;
-      importantDatesContainer.appendChild(dateElement);
+  function drawHeart() {
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ff6b6b';
+    ctx.beginPath();
+    ctx.moveTo(75, 40);
+    ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+    ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+    ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
+    ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+    ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+    ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
+    ctx.fill();
+  }
+
+  function updateMood() {
+    currentMood = document.getElementById('moodSelector').value;
+    document.body.className = currentMood;
+    updateValentineImages();
+  }
+
+  function updateValentineImages() {
+    const images = document.querySelectorAll('.valentine-image');
+    const moodImages = getMoodImages();
+    images.forEach((img, index) => {
+      img.src = moodImages[index];
+      img.alt = `Image d'amour ${index + 1} - Humeur: ${currentMood}`;
     });
   }
 
-  nextMessageButton.addEventListener('click', updateMessage);
-  nextDreamButton.addEventListener('click', updateDream);
+  function getMoodImages() {
+    return moodImages[currentMood] || moodImages.happy;
+  }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  function createPhotoAlbum() {
+    const photoAlbum = document.querySelector('.photo-album');
+    const allImages = Object.values(moodImages).flat();
+    const shuffledImages = shuffleArray(allImages);
+    
+    shuffledImages.slice(0, 6).forEach((imageSrc, index) => {
+      const photo = document.createElement('div');
+      photo.classList.add('photo');
+      photo.style.backgroundImage = `url(${imageSrc})`;
+      photo.addEventListener('click', () => openModal(imageSrc));
+      photoAlbum.appendChild(photo);
+    });
+  }
+
+  function openModal(imageSrc) {
+    const modal = document.getElementById('photoModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = imageSrc;
+    modal.style.display = 'block';
+    
+    modal.onclick = function() {
+      modal.style.display = 'none';
+    }
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const nextAnniversary = new Date(now.getFullYear(), 0, 23); // 23 janvier
+    if (now > nextAnniversary) {
+      nextAnniversary.setFullYear(nextAnniversary.getFullYear() + 1);
+    }
+    const difference = nextAnniversary - now;
+    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+    document.getElementById('countdown').innerHTML = `Prochain anniversaire dans : ${days}j ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  function addMessageToList(message, customMessage = false) {
+    const messageList = document.getElementById('messageList');
+    const messageItem = document.createElement('div');
+    messageItem.classList.add('message-item');
+    messageItem.innerHTML = `
+      <span>${message}</span>
+      <button class="like-button">❤️</button>
+    `;
+    
+    const likeButton = messageItem.querySelector('.like-button');
+    likeButton.addEventListener('click', function() {
+      this.classList.toggle('liked');
+    });
+
+    if (customMessage) {
+      messageList.insertBefore(messageItem, messageList.firstChild);
+    } else {
+      messageList.appendChild(messageItem);
+    }
+  }
+
+  function displayImportantDates() {
+    const datesContainer = document.getElementById('importantDates');
+    datesContainer.innerHTML = '';
+    importantDates.forEach(dateObj => {
+      const dateElement = document.createElement('div');
+      dateElement.textContent = `${dateObj.date} - ${dateObj.event}`;
+      datesContainer.appendChild(dateElement);
+    });
+  }
+
+  document.getElementById('nextMessageButton').addEventListener('click', updateMessage);
+  document.getElementById('nextDreamButton').addEventListener('click', updateDream);
+  document.getElementById('moodSelector').addEventListener('change', updateMood);
+  document.getElementById('nextQuote').addEventListener('click', updateQuote);
+  document.getElementById('addToFavorites').addEventListener('click', addToFavorites);
+
+  const addCustomMessageButton = document.getElementById('addCustomMessage');
+  const customMessageInput = document.getElementById('customMessage');
+  
   addCustomMessageButton.addEventListener('click', () => {
     const customMessage = customMessageInput.value.trim();
     if (customMessage) {
@@ -693,25 +728,10 @@
       customMessageInput.value = '';
     }
   });
-  moodSelector.addEventListener('change', updateMood);
-  photoModal.addEventListener('click', () => {
-    gsap.to(modalImage, { scale: 0.8, opacity: 0, duration: 0.5, onComplete: () => {
-      photoModal.style.display = 'none';
-    }});
-  });
-  nextQuoteButton.addEventListener('click', updateQuote);
-  addToFavoritesButton.addEventListener('click', addToFavorites);
 
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const tabName = button.getAttribute('data-tab');
-      tabButtons.forEach(btn => btn.classList.remove('active'));
-      tabContents.forEach(content => content.classList.remove('active'));
-      button.classList.add('active');
-      document.getElementById(`${tabName}Tab`).classList.add('active');
-    });
-  });
-
+  const addCustomDateButton = document.getElementById('addCustomDate');
+  const customDateInput = document.getElementById('customDate');
+  
   addCustomDateButton.addEventListener('click', () => {
     const customDate = customDateInput.value.trim();
     if (customDate) {
@@ -724,15 +744,75 @@
     }
   });
 
-  updateMessage();
-  updateDream();
-  drawHeart();
-  updateMood();
-  setInterval(updateCountdown, 1000);
-  updateQuote();
-  displayImportantDates();
+  const tabs = document.querySelectorAll('.tab');
+  const tabContents = document.querySelectorAll('.tab-content');
 
-  gsap.from('.container', { opacity: 0, y: 50, duration: 1 });
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const tabId = tab.getAttribute('data-tab');
+      
+      tabs.forEach(t => t.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      tab.classList.add('active');
+      document.getElementById(`${tabId}Tab`).classList.add('active');
+    });
+  });
+
+  function saveChanges() {
+    const dataToSave = {
+      messages: messages,
+      futureDreams: futureDreams,
+      loveQuotes: loveQuotes,
+      favoriteQuotes: favoriteQuotes,
+      importantDates: importantDates,
+      currentMood: currentMood
+    };
+
+    localStorage.setItem('lovePageData', JSON.stringify(dataToSave));
+    
+    const savedChangesMessage = document.getElementById('savedChangesMessage');
+    savedChangesMessage.textContent = 'Changements enregistrés avec succès !';
+    setTimeout(() => {
+      savedChangesMessage.textContent = '';
+    }, 3000);
+  }
+
+  function loadSavedChanges() {
+    const savedData = localStorage.getItem('lovePageData');
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      messages = parsedData.messages;
+      futureDreams = parsedData.futureDreams;
+      loveQuotes = parsedData.loveQuotes;
+      favoriteQuotes = parsedData.favoriteQuotes;
+      importantDates = parsedData.importantDates;
+      currentMood = parsedData.currentMood;
+
+      updateMessage();
+      updateDream();
+      updateQuote();
+      updateFavoriteQuotes();
+      displayImportantDates();
+      document.getElementById('moodSelector').value = currentMood;
+      updateMood();
+    }
+  }
+
+  const saveChangesButton = document.getElementById('saveChangesButton');
+  saveChangesButton.addEventListener('click', saveChanges);
+
+  window.addEventListener('load', () => {
+    loadSavedChanges();
+    updateMessage();
+    updateDream();
+    updateQuote();
+    drawHeart();
+    createPhotoAlbum();
+    displayImportantDates();
+    updateMood();
+    setInterval(updateCountdown, 1000);
+  });
 </script>
 </body>
 </html>
