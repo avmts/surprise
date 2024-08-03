@@ -200,30 +200,14 @@
   }
 
   /* Styles spécifiques aux humeurs */
-  body.happy {
-    background: linear-gradient(45deg, #FFD700 0%, #FFA500 100%);
-  }
-  body.romantic {
-    background: linear-gradient(45deg, #FF69B4 0%, #FF1493 100%);
-  }
-  body.nostalgic {
-    background: linear-gradient(45deg, #B0C4DE 0%, #4682B4 100%);
-  }
-  body.excited {
-    background: linear-gradient(45deg, #FF4500 0%, #FF6347 100%);
-  }
-  body.calm {
-    background: linear-gradient(45deg, #E0FFFF 0%, #87CEEB 100%);
-  }
-  body.passionate {
-    background: linear-gradient(45deg, #FF0000 0%, #8B0000 100%);
-  }
-  body.playful {
-    background: linear-gradient(45deg, #00FF00 0%, #32CD32 100%);
-  }
-  body.thoughtful {
-    background: linear-gradient(45deg, #9370DB 0%, #4B0082 100%);
-  }
+  body.happy { background: linear-gradient(45deg, #FFD700 0%, #FFA500 100%); }
+  body.romantic { background: linear-gradient(45deg, #FF69B4 0%, #FF1493 100%); }
+  body.nostalgic { background: linear-gradient(45deg, #B0C4DE 0%, #4682B4 100%); }
+  body.excited { background: linear-gradient(45deg, #FF4500 0%, #FF6347 100%); }
+  body.calm { background: linear-gradient(45deg, #E0FFFF 0%, #87CEEB 100%); }
+  body.passionate { background: linear-gradient(45deg, #FF0000 0%, #8B0000 100%); }
+  body.playful { background: linear-gradient(45deg, #00FF00 0%, #32CD32 100%); }
+  body.thoughtful { background: linear-gradient(45deg, #9370DB 0%, #4B0082 100%); }
 
   .happy .container { box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3), 0 6px 6px rgba(255, 165, 0, 0.3); }
   .romantic .container { box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3), 0 6px 6px rgba(255, 20, 147, 0.3); }
@@ -260,6 +244,107 @@
   .passionate .button:hover { background-color: #FF0000; }
   .playful .button:hover { background-color: #00FF00; }
   .thoughtful .button:hover { background-color: #9370DB; }
+
+  #quoteContainer {
+    margin-top: 2em;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #favoriteQuotes {
+    margin-top: 2em;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .favorite-quote {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+
+  .tab-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+  }
+
+  .tab {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .tab.active {
+    background-color: #ff6b6b;
+    color: white;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 20px;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  #addToFavorites, #nextQuote {
+    margin-top: 1em;
+    margin-right: 0.5em;
+  }
+
+  #importantDates {
+    margin-top: 1em;
+    text-align: left;
+  }
+
+  #importantDates div {
+    padding: 0.5em;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 0.5em;
+    transition: all 0.3s ease;
+  }
+
+  #importantDates div:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.02);
+  }
+
+  #playlist {
+    margin-top: 2em;
+    padding: 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #playlist a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1DB954;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  #playlist a:hover {
+    background-color: #1ED760;
+    transform: scale(1.05);
+  }
 
   @media (max-width: 600px) {
     .container {
@@ -322,13 +407,36 @@
       <!-- Les photos seront ajoutées dynamiquement ici -->
     </div>
 
-    <h2>Citation d'Amour du Jour</h2>
-    <p id="loveQuote"></p>
+    <div class="tab-container">
+      <button class="tab active" data-tab="quotes">Citations</button>
+      <button class="tab" data-tab="favorites">Favoris</button>
+    </div>
+
+    <div id="quotesTab" class="tab-content active">
+      <div id="quoteContainer">
+        <h2>Citation d'Amour du Jour</h2>
+        <p id="loveQuote"></p>
+        <button class="button" id="nextQuote">Citation Suivante</button>
+        <button class="button" id="addToFavorites">Ajouter aux Favoris</button>
+      </div>
+    </div>
+
+    <div id="favoritesTab" class="tab-content">
+      <div id="favoriteQuotes">
+        <h2>Citations Favorites</h2>
+        <!-- Les citations favorites seront ajoutées ici dynamiquement -->
+      </div>
+    </div>
 
     <h2>Calendrier des Dates Importantes</h2>
     <input type="text" id="customDate" placeholder="Ajoutez une date importante (JJ/MM/AAAA - Événement)">
     <button class="button" id="addCustomDate">Ajouter Date</button>
     <div id="importantDates"></div>
+
+    <div id="playlist">
+      <h2>Notre Playlist d'Amour</h2>
+      <a href="https://open.spotify.com/playlist/4Uz69GmGgE2QbrAmO4zb9z?si=a142c31c23ba4ce6" target="_blank">Écouter sur Spotify</a>
+    </div>
   </div>
   
   <div id="photoModal">
@@ -357,441 +465,304 @@
     "Apprendre une nouvelle langue ensemble et visiter le pays où elle est parlée."
   ];
 
-  const loveQuotes = {
-    happy: "Le bonheur est la seule chose qui se double si on le partage. - Albert Schweitzer",
-    romantic: "L'amour ne se voit pas avec les yeux, mais avec le cœur. - William Shakespeare",
-    nostalgic: "La nostalgie, c'est le désir d'on ne sait quoi. - Antoine de Saint-Exupéry",
-    excited: "L'excitation est le moteur de la découverte. - Isaac Asimov",
-    calm: "La paix vient de l'intérieur. Ne la cherchez pas à l'extérieur. - Bouddha",
-    passionate: "La passion est l'énergie de l'âme. - Oprah Winfrey",
-    playful: "On ne joue pas parce qu'on est enfants, on est enfants parce qu'on joue. - Daniel Pennac",
-    thoughtful: "La réflexion est le chemin vers l'immortalité ; l'irréflexion, le chemin vers la mort. - Bouddha"
-  };
+  const loveQuotes = [
+    "Le bonheur est la seule chose qui se double si on le partage. - Albert Schweitzer",
+    "L'amour ne se voit pas avec les yeux, mais avec le cœur. - William Shakespeare",
+    "La nostalgie, c'est le désir d'on ne sait quoi. - Antoine de Saint-Exupéry",
+    "L'excitation est le moteur de la découverte. - Isaac Asimov",
+    "La paix vient de l'intérieur. Ne la cherchez pas à l'extérieur. - Bouddha",
+    "La passion est l'énergie de l'âme. - Oprah Winfrey",
+    "On ne joue pas parce qu'on est enfants, on est enfants parce qu'on joue. - Daniel Pennac",
+    "La réflexion est le chemin vers l'immortalité ; l'irréflexion, le chemin vers la mort. - Bouddha",
+    "L'amour est la poésie des sens. - Honoré de Balzac",
+    "Le plus grand bonheur de l'existence est d'être convaincu qu'on est aimé. - Victor Hugo"
+  ];
 
   const moodImages = {
     happy: [
-      "https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1515890435782-59a5bb6ec191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+      "https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1515890435782-59a5bb6ec191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     romantic: [
-      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1518895312237-a9e23508077d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     nostalgic: [
-      "https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1502489597346-dad15683d4c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+      "https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1502489597346-dad15683d4c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     excited: [
-      "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1520183802803-06f731a2059f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+      "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1520183802803-06f731a2059f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH
+x8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     calm: [
-      "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+      "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&ixid=M3wxM3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1476611338391-6f395a0e4805?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1517483000871-1dbf64a6e1c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     passionate: [
-      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1518895312237-a9e23508077d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     playful: [
-      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+      "https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1508176967528-7ad7c511bf21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1515890435782-59a5bb6ec191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ],
     thoughtful: [
-      "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
-      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+      "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1502489597346-dad15683d4c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300",
+      "https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300"
     ]
   };
 
+  let currentMood = 'happy';
   let currentMessageIndex = 0;
   let currentDreamIndex = 0;
+  let currentQuoteIndex = 0;
+  const favoriteQuotes = [];
+
   const messageElement = document.getElementById('message');
   const futureDreamElement = document.getElementById('futureDream');
   const nextMessageButton = document.getElementById('nextMessageButton');
   const nextDreamButton = document.getElementById('nextDreamButton');
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
   const messageList = document.getElementById('messageList');
   const customMessageInput = document.getElementById('customMessage');
   const addCustomMessageButton = document.getElementById('addCustomMessage');
   const moodSelector = document.getElementById('moodSelector');
   const countdownElement = document.getElementById('countdown');
+  const valentineImages = document.querySelectorAll('.valentine-image');
   const photoAlbum = document.querySelector('.photo-album');
   const photoModal = document.getElementById('photoModal');
   const modalImage = document.getElementById('modalImage');
   const loveQuoteElement = document.getElementById('loveQuote');
+  const nextQuoteButton = document.getElementById('nextQuote');
+  const addToFavoritesButton = document.getElementById('addToFavorites');
+  const favoriteQuotesContainer = document.getElementById('favoriteQuotes');
+  const tabButtons = document.querySelectorAll('.tab');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const importantDates = [
+    { date: '14/02/2024', event: 'Saint-Valentin' },
+    { date: '01/01/2024', event: 'Nouvel An' },
+    { date: '23/01/2023', event: 'Notre Amour' },
+    { date: '08/05/2005', event: 'Naissance Avon' },
+    { date: '26/07/2005', event: 'Naissance Yayouille' }
+  ];
+  const importantDatesContainer = document.getElementById('importantDates');
   const customDateInput = document.getElementById('customDate');
   const addCustomDateButton = document.getElementById('addCustomDate');
-  const importantDatesElement = document.getElementById('importantDates');
 
-  function displayNextMessage() {
-    gsap.to(messageElement, {
-      opacity: 0,
-      duration: 0.5,
-      onComplete: () => {
-        messageElement.textContent = messages[currentMessageIndex];
-        gsap.to(messageElement, {opacity: 1, duration: 0.5});
-        addMessageToList(messages[currentMessageIndex]);
-        currentMessageIndex = (currentMessageIndex + 1) % messages.length;
-      }
-    });
+  function updateMessage() {
+    gsap.to(messageElement, { opacity: 0, duration: 0.5, onComplete: () => {
+      messageElement.textContent = messages[currentMessageIndex];
+      gsap.to(messageElement, { opacity: 1, duration: 0.5 });
+    }});
+    currentMessageIndex = (currentMessageIndex + 1) % messages.length;
   }
 
-  function displayNextDream() {
-    gsap.to(futureDreamElement, {
-      opacity: 0,
-      duration: 0.5,
-      onComplete: () => {
-        futureDreamElement.textContent = futureDreams[currentDreamIndex];
-        gsap.to(futureDreamElement, {opacity: 1, duration: 0.5});
-        currentDreamIndex = (currentDreamIndex + 1) % futureDreams.length;
-        drawDream();
-      }
-    });
+  function updateDream() {
+    gsap.to(futureDreamElement, { opacity: 0, duration: 0.5, onComplete: () => {
+      futureDreamElement.textContent = futureDreams[currentDreamIndex];
+      gsap.to(futureDreamElement, { opacity: 1, duration: 0.5 });
+    }});
+    currentDreamIndex = (currentDreamIndex + 1) % futureDreams.length;
   }
 
-  function addMessageToList(message) {
-    const messageItem = document.createElement('div');
-    messageItem.className = 'message-item';
-    messageItem.innerHTML = `
+  function drawHeart() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#ff6b6b';
+    ctx.beginPath();
+    ctx.moveTo(150, 100);
+    ctx.bezierCurveTo(150, 80, 130, 50, 100, 50);
+    ctx.bezierCurveTo(60, 50, 50, 90, 50, 100);
+    ctx.bezierCurveTo(50, 140, 90, 180, 150, 220);
+    ctx.bezierCurveTo(210, 180, 250, 140, 250, 100);
+    ctx.bezierCurveTo(250, 90, 240, 50, 200, 50);
+    ctx.bezierCurveTo(170, 50, 150, 80, 150, 100);
+    ctx.fill();
+  }
+
+  function addMessageToList(message, customMessage = false) {
+    const li = document.createElement('div');
+    li.classList.add('message-item');
+    li.innerHTML = `
       <span>${message}</span>
-      <button class="like-button">J'aime</button>
+      <button class="like-button">❤️</button>
     `;
-    messageList.appendChild(messageItem);
-
-    const likeButton = messageItem.querySelector('.like-button');
-    likeButton.addEventListener('click', function() {
-      this.classList.toggle('liked');
-      this.textContent = this.classList.contains('liked') ? 'Aimé' : 'J\'aime';
-    });
-  }
-
-  function addCustomMessage() {
-    const customMessage = customMessageInput.value.trim();
     if (customMessage) {
-      addMessageToList(customMessage);
-      customMessageInput.value = '';
+      li.style.fontStyle = 'italic';
     }
+    messageList.appendChild(li);
+    
+    const likeButton = li.querySelector('.like-button');
+    likeButton.addEventListener('click', () => {
+      likeButton.classList.toggle('liked');
+    });
+    
+    gsap.from(li, { opacity: 0, y: 20, duration: 0.5 });
   }
 
   function updateMood() {
-    const mood = moodSelector.value;
-    document.body.className = mood;
-    
-    // Mise à jour des images en fonction de l'humeur
-    const valentineImages = document.querySelectorAll('.valentine-image');
-    valentineImages.forEach((img, index) => {
-      img.src = moodImages[mood][index];
-      img.alt = `Image d'amour pour l'humeur ${mood}`;
-    });
-    
-    // Logique supplémentaire en fonction de l'humeur
-    switch(mood) {
-      case 'happy':
-        changeBackgroundAnimation('confetti');
-        playHappyMusic();
-        break;
-      case 'romantic':
-        changeBackgroundAnimation('hearts');
-        playRomanticMusic();
-        break;
-      case 'nostalgic':
-        changeBackgroundAnimation('sepia');
-        playNostalgicMusic();
-        break;
-      case 'excited':
-        changeBackgroundAnimation('fireworks');
-        playExcitedMusic();
-        break;
-      case 'calm':
-        changeBackgroundAnimation('waves');
-        playCalmMusic();
-        break;
-      case 'passionate':
-        changeBackgroundAnimation('flames');
-        playPassionateMusic();
-        break;
-      case 'playful':
-        changeBackgroundAnimation('bubbles');
-        playPlayfulMusic();
-        break;
-      case 'thoughtful':
-        changeBackgroundAnimation('stars');
-        playThoughtfulMusic();
-        break;
-    }
-    
-    updateQuoteBasedOnMood(mood);
-  }
-
-  function changeBackgroundAnimation(animationType) {
-    // Supprime toutes les animations précédentes
-    document.body.classList.remove('confetti', 'hearts', 'sepia', 'fireworks', 'waves', 'flames', 'bubbles', 'stars');
-    
-    // Ajoute la nouvelle animation
-    document.body.classList.add(animationType);
-  }
-
-  function playHappyMusic() {
-    console.log("Playing happy music");
-  }
-
-  function playRomanticMusic() {
-    console.log("Playing romantic music");
-  }
-
-  function playNostalgicMusic() {
-    console.log("Playing nostalgic music");
-  }
-
-  function playExcitedMusic() {
-    console.log("Playing excited music");
-  }
-
-  function playCalmMusic() {
-    console.log("Playing calm music");
-  }
-
-  function playPassionateMusic() {
-    console.log("Playing passionate music");
-  }
-
-  function playPlayfulMusic() {
-    console.log("Playing playful music");
-  }
-
-  function playThoughtfulMusic() {
-    console.log("Playing thoughtful music");
-  }
-
-  function updateQuoteBasedOnMood(mood) {
-    loveQuoteElement.textContent = loveQuotes[mood] || "L'amour est la poésie des sens. - Honoré de Balzac";
+    const newMood = moodSelector.value;
+    document.body.className = newMood;
+    currentMood = newMood;
+    updateImages();
   }
 
   function updateCountdown() {
     const now = new Date();
-    const valentinesDay = new Date(now.getFullYear(), 1, 14); // 14 février
-    if (now > valentinesDay) {
-      valentinesDay.setFullYear(valentinesDay.getFullYear() + 1);
+    const valentine = new Date(now.getFullYear(), 1, 14);
+    if (now > valentine) {
+      valentine.setFullYear(valentine.getFullYear() + 1);
     }
-    const diff = valentinesDay - now;
+    const diff = valentine - now;
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    countdownElement.textContent = `Temps jusqu'à la Saint-Valentin : ${days}j ${hours}h ${minutes}m ${seconds}s`;
+    
+    countdownElement.textContent = `Temps restant jusqu'à la Saint-Valentin : ${days}j ${hours}h ${minutes}m ${seconds}s`;
   }
 
-  function createPhotoAlbum() {
-    const photoUrls = [
-      'https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
-      'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
-      'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
-      'https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
-      'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
-      'https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300'
-    ];
-
-    photoUrls.forEach((url, index) => {
+  function updateImages() {
+    const images = moodImages[currentMood];
+    valentineImages.forEach((img, index) => {
+      gsap.to(img, { opacity: 0, duration: 0.5, onComplete: () => {
+        img.src = images[index];
+        gsap.to(img, { opacity: 1, duration: 0.5 });
+      }});
+    });
+    
+    photoAlbum.innerHTML = '';
+    images.forEach(src => {
       const photo = document.createElement('div');
-      photo.className = 'photo';
-      photo.style.backgroundImage = `url(${url})`;
-      photo.addEventListener('click', () => openModal(url));
+      photo.classList.add('photo');
+      photo.style.backgroundImage = `url(${src})`;
+      photo.addEventListener('click', () => {
+        modalImage.src = src;
+        photoModal.style.display = 'flex';
+        gsap.from(modalImage, { scale: 0.8, opacity: 0, duration: 0.5 });
+      });
       photoAlbum.appendChild(photo);
     });
   }
 
-  function openModal(url) {
-    modalImage.src = url;
-    photoModal.style.display = 'flex';
+  function updateQuote() {
+    gsap.to(loveQuoteElement, { opacity: 0, duration: 0.5, onComplete: () => {
+      loveQuoteElement.textContent = loveQuotes[currentQuoteIndex];
+      gsap.to(loveQuoteElement, { opacity: 1, duration: 0.5 });
+    }});
+    currentQuoteIndex = (currentQuoteIndex + 1) % loveQuotes.length;
   }
 
-  function addCustomDate() {
-    const customDate = customDateInput.value.trim();
-    if (customDate) {
-      const dateItem = document.createElement('p');
-      dateItem.textContent = customDate;
-      importantDatesElement.appendChild(dateItem);
-      customDateInput.value = '';
+  function addToFavorites() {
+    const currentQuote = loveQuotes[currentQuoteIndex];
+    if (!favoriteQuotes.includes(currentQuote)) {
+      favoriteQuotes.push(currentQuote);
+      updateFavoriteQuotes();
     }
   }
 
-  nextMessageButton.addEventListener('click', displayNextMessage);
-  nextDreamButton.addEventListener('click', displayNextDream);
-  addCustomMessageButton.addEventListener('click', addCustomMessage);
-  moodSelector.addEventListener('change', updateMood);
-  photoModal.addEventListener('click', () => photoModal.style.display = 'none');
-  addCustomDateButton.addEventListener('click', addCustomDate);
-
-  // Afficher le premier message et rêve automatiquement
-  displayNextMessage();
-  displayNextDream();
-
-  // Mettre à jour le compte à rebours toutes les secondes
-  setInterval(updateCountdown, 1000);
-
-  // Créer l'album photo
-  createPhotoAlbum();
-
-  // Animation d'entrée initiale
-  gsap.from('.container', {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    ease: 'power3.out'
-  });
-
-  // Animation continue du cœur
-  gsap.to('.heart', {
-    scale: 1.1,
-    duration: 0.5,
-    yoyo: true,
-    repeat: -1,
-    ease: 'power1.inOut'
-  });
-
-  // Canvas pour illustrer les rêves futurs
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
-
-  function drawDream() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = getRandomColor();
-    ctx.strokeStyle = getRandomColor();
-    ctx.lineWidth = 2;
-
-    // Dessiner une forme abstraite pour représenter le rêve futur
-    ctx.beginPath();
-    ctx.moveTo(150, 100);
-    for (let i = 0; i < 8; i++) {
-      ctx.quadraticCurveTo(
-        Math.random() * canvas.width,
-        Math.random() * canvas.height,
-        Math.random() * canvas.width,
-        Math.random() * canvas.height
-      );
-    }
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-
-    // Ajouter des étoiles pour symboliser les rêves
-    for (let i = 0; i < 20; i++) {
-      drawStar(Math.random() * canvas.width, Math.random() * canvas.height, 5, 2, 4);
-    }
-  }
-
-  function drawStar(cx, cy, spikes, outerRadius, innerRadius) {
-    let rot = Math.PI / 2 * 3;
-    let x = cx;
-    let y = cy;
-    let step = Math.PI / spikes;
-
-    ctx.beginPath();
-    ctx.moveTo(cx, cy - outerRadius);
-    for (let i = 0; i < spikes; i++) {
-      x = cx + Math.cos(rot) * outerRadius;
-      y = cy + Math.sin(rot) * outerRadius;
-      ctx.lineTo(x, y);
-      rot += step;
-
-      x = cx + Math.cos(rot) * innerRadius;
-      y = cy + Math.sin(rot) * innerRadius;
-      ctx.lineTo(x, y);
-      rot += step;
-    }
-    ctx.lineTo(cx, cy - outerRadius);
-    ctx.closePath();
-    ctx.fillStyle = 'white';
-    ctx.fill();
-  }
-
-  function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-
-  drawDream();
-
-  // Fonction pour ajuster la taille du canvas
-  function resizeCanvas() {
-    const container = document.querySelector('.container');
-    const containerWidth = container.offsetWidth;
-    canvas.width = containerWidth - 40; // 40px pour le padding
-    canvas.height = canvas.width * 2/3; // Maintenir un ratio de 3:2
-    drawDream(); // Redessiner après le redimensionnement
-  }
-
-  // Appeler resizeCanvas au chargement et au redimensionnement de la fenêtre
-  window.addEventListener('load', resizeCanvas);
-  window.addEventListener('resize', resizeCanvas);
-
-  // Fonction pour vérifier si un élément est visible dans la fenêtre
-  function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
-  // Fonction pour animer les éléments lorsqu'ils deviennent visibles
-  function animateOnScroll() {
-    const elements = document.querySelectorAll('.container > *');
-    elements.forEach((element) => {
-      if (isElementInViewport(element) && !element.classList.contains('animated')) {
-        gsap.from(element, {
-          opacity: 0,
-          y: 50,
-          duration: 1,
-          ease: 'power3.out'
-        });
-        element.classList.add('animated');
-      }
+  function updateFavoriteQuotes() {
+    favoriteQuotesContainer.innerHTML = '';
+    favoriteQuotes.forEach(quote => {
+      const quoteElement = document.createElement('div');
+      quoteElement.classList.add('favorite-quote');
+      quoteElement.textContent = quote;
+      favoriteQuotesContainer.appendChild(quoteElement);
     });
   }
 
-  // Ajouter l'écouteur d'événement pour l'animation au défilement
-  window.addEventListener('scroll', animateOnScroll);
-  // Appeler une fois au chargement pour animer les éléments initialement visibles
-  animateOnScroll();
+  function displayImportantDates() {
+    importantDatesContainer.innerHTML = '';
+    importantDates.forEach(date => {
+      const dateElement = document.createElement('div');
+      dateElement.textContent = `${date.date} - ${date.event}`;
+      importantDatesContainer.appendChild(dateElement);
+    });
+  }
 
-  // Animation des images de la Saint-Valentin
-  gsap.from('.valentine-image', {
-    scale: 0,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.2,
-    ease: 'back.out(1.7)',
-    scrollTrigger: {
-      trigger: '.valentine-images',
-      start: 'top 80%',
+  nextMessageButton.addEventListener('click', updateMessage);
+  nextDreamButton.addEventListener('click', updateDream);
+  addCustomMessageButton.addEventListener('click', () => {
+    const customMessage = customMessageInput.value.trim();
+    if (customMessage) {
+      addMessageToList(customMessage, true);
+      customMessageInput.value = '';
+    }
+  });
+  moodSelector.addEventListener('change', updateMood);
+  photoModal.addEventListener('click', () => {
+    gsap.to(modalImage, { scale: 0.8, opacity: 0, duration: 0.5, onComplete: () => {
+      photoModal.style.display = 'none';
+    }});
+  });
+  nextQuoteButton.addEventListener('click', updateQuote);
+  addToFavoritesButton.addEventListener('click', addToFavorites);
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabName = button.getAttribute('data-tab');
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      button.classList.add('active');
+      document.getElementById(`${tabName}Tab`).classList.add('active');
+    });
+  });
+
+  addCustomDateButton.addEventListener('click', () => {
+    const customDate = customDateInput.value.trim();
+    if (customDate) {
+      const [date, event] = customDate.split(' - ');
+      if (date && event) {
+        importantDates.push({ date, event });
+        displayImportantDates();
+        customDateInput.value = '';
+      }
     }
   });
 
-  // Initialiser l'humeur par défaut
+  updateMessage();
+  updateDream();
+  drawHeart();
   updateMood();
+  setInterval(updateCountdown, 1000);
+  updateQuote();
+  displayImportantDates();
+
+  gsap.from('.container', { opacity: 0, y: 50, duration: 1 });
 </script>
 </body>
 </html>
