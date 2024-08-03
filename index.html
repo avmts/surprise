@@ -212,26 +212,54 @@
   body.excited {
     background: linear-gradient(45deg, #FF4500 0%, #FF6347 100%);
   }
+  body.calm {
+    background: linear-gradient(45deg, #E0FFFF 0%, #87CEEB 100%);
+  }
+  body.passionate {
+    background: linear-gradient(45deg, #FF0000 0%, #8B0000 100%);
+  }
+  body.playful {
+    background: linear-gradient(45deg, #00FF00 0%, #32CD32 100%);
+  }
+  body.thoughtful {
+    background: linear-gradient(45deg, #9370DB 0%, #4B0082 100%);
+  }
 
   .happy .container { box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3), 0 6px 6px rgba(255, 165, 0, 0.3); }
   .romantic .container { box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3), 0 6px 6px rgba(255, 20, 147, 0.3); }
   .nostalgic .container { box-shadow: 0 10px 20px rgba(176, 196, 222, 0.3), 0 6px 6px rgba(70, 130, 180, 0.3); }
   .excited .container { box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3), 0 6px 6px rgba(255, 99, 71, 0.3); }
+  .calm .container { box-shadow: 0 10px 20px rgba(224, 255, 255, 0.3), 0 6px 6px rgba(135, 206, 235, 0.3); }
+  .passionate .container { box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3), 0 6px 6px rgba(139, 0, 0, 0.3); }
+  .playful .container { box-shadow: 0 10px 20px rgba(0, 255, 0, 0.3), 0 6px 6px rgba(50, 205, 50, 0.3); }
+  .thoughtful .container { box-shadow: 0 10px 20px rgba(147, 112, 219, 0.3), 0 6px 6px rgba(75, 0, 130, 0.3); }
 
   .happy h1, .happy h2, .happy .heart, .happy #countdown, .happy #loveQuote { color: #FFD700; }
   .romantic h1, .romantic h2, .romantic .heart, .romantic #countdown, .romantic #loveQuote { color: #FF1493; }
   .nostalgic h1, .nostalgic h2, .nostalgic .heart, .nostalgic #countdown, .nostalgic #loveQuote { color: #4682B4; }
   .excited h1, .excited h2, .excited .heart, .excited #countdown, .excited #loveQuote { color: #FF4500; }
+  .calm h1, .calm h2, .calm .heart, .calm #countdown, .calm #loveQuote { color: #87CEEB; }
+  .passionate h1, .passionate h2, .passionate .heart, .passionate #countdown, .passionate #loveQuote { color: #FF0000; }
+  .playful h1, .playful h2, .playful .heart, .playful #countdown, .playful #loveQuote { color: #32CD32; }
+  .thoughtful h1, .thoughtful h2, .thoughtful .heart, .thoughtful #countdown, .thoughtful #loveQuote { color: #9370DB; }
 
   .happy .button { background-color: #FFA500; }
   .romantic .button { background-color: #FF69B4; }
   .nostalgic .button { background-color: #6495ED; }
   .excited .button { background-color: #FF6347; }
+  .calm .button { background-color: #87CEEB; }
+  .passionate .button { background-color: #8B0000; }
+  .playful .button { background-color: #32CD32; }
+  .thoughtful .button { background-color: #4B0082; }
 
   .happy .button:hover { background-color: #FFD700; }
   .romantic .button:hover { background-color: #FF1493; }
   .nostalgic .button:hover { background-color: #4682B4; }
   .excited .button:hover { background-color: #FF4500; }
+  .calm .button:hover { background-color: #E0FFFF; }
+  .passionate .button:hover { background-color: #FF0000; }
+  .playful .button:hover { background-color: #00FF00; }
+  .thoughtful .button:hover { background-color: #9370DB; }
 
   @media (max-width: 600px) {
     .container {
@@ -276,14 +304,18 @@
       <option value="romantic">Romantique</option>
       <option value="nostalgic">Nostalgique</option>
       <option value="excited">Excité</option>
+      <option value="calm">Calme</option>
+      <option value="passionate">Passionné</option>
+      <option value="playful">Joueur</option>
+      <option value="thoughtful">Pensif</option>
     </select>
     
     <div id="countdown"></div>
     <div class="valentine-images">
-      <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100" alt="Couple s'embrassant au coucher du soleil" class="valentine-image">
-      <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100" alt="Mains formant un cœur" class="valentine-image">
-      <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100" alt="Cœur dessiné dans le sable" class="valentine-image">
-      <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100" alt="Couple s'embrassant sous un parapluie" class="valentine-image">
+      <img src="" alt="Image d'amour 1" class="valentine-image">
+      <img src="" alt="Image d'amour 2" class="valentine-image">
+      <img src="" alt="Image d'amour 3" class="valentine-image">
+      <img src="" alt="Image d'amour 4" class="valentine-image">
     </div>
     
     <div class="photo-album">
@@ -325,13 +357,67 @@
     "Apprendre une nouvelle langue ensemble et visiter le pays où elle est parlée."
   ];
 
-  const loveQuotes = [
-    "L'amour ne se voit pas avec les yeux, mais avec le cœur. - William Shakespeare",
-    "Je t'aime non seulement pour ce que tu es, mais pour ce que je suis quand je suis avec toi. - Roy Croft",
-    "L'amour est composé d'une seule âme habitant deux corps. - Aristote",
-    "Le plus grand bonheur de la vie, c'est d'être convaincu qu'on est aimé. - Victor Hugo",
-    "Aimer, ce n'est pas se regarder l'un l'autre, c'est regarder ensemble dans la même direction. - Antoine de Saint-Exupéry"
-  ];
+  const loveQuotes = {
+    happy: "Le bonheur est la seule chose qui se double si on le partage. - Albert Schweitzer",
+    romantic: "L'amour ne se voit pas avec les yeux, mais avec le cœur. - William Shakespeare",
+    nostalgic: "La nostalgie, c'est le désir d'on ne sait quoi. - Antoine de Saint-Exupéry",
+    excited: "L'excitation est le moteur de la découverte. - Isaac Asimov",
+    calm: "La paix vient de l'intérieur. Ne la cherchez pas à l'extérieur. - Bouddha",
+    passionate: "La passion est l'énergie de l'âme. - Oprah Winfrey",
+    playful: "On ne joue pas parce qu'on est enfants, on est enfants parce qu'on joue. - Daniel Pennac",
+    thoughtful: "La réflexion est le chemin vers l'immortalité ; l'irréflexion, le chemin vers la mort. - Bouddha"
+  };
+
+  const moodImages = {
+    happy: [
+      "https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1515890435782-59a5bb6ec191?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+    ],
+    romantic: [
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+    ],
+    nostalgic: [
+      "https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1502489597346-dad15683d4c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+    ],
+    excited: [
+      "https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1520183802803-06f731a2059f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+    ],
+    calm: [
+      "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+    ],
+    passionate: [
+      "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1518895312237-a9e23508077d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+    ],
+    playful: [
+      "https://images.unsplash.com/photo-1508173702673-c988d23eb5c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+    ],
+    thoughtful: [
+      "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100",
+      "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100"
+    ]
+  };
 
   let currentMessageIndex = 0;
   let currentDreamIndex = 0;
@@ -406,6 +492,13 @@
     const mood = moodSelector.value;
     document.body.className = mood;
     
+    // Mise à jour des images en fonction de l'humeur
+    const valentineImages = document.querySelectorAll('.valentine-image');
+    valentineImages.forEach((img, index) => {
+      img.src = moodImages[mood][index];
+      img.alt = `Image d'amour pour l'humeur ${mood}`;
+    });
+    
     // Logique supplémentaire en fonction de l'humeur
     switch(mood) {
       case 'happy':
@@ -424,91 +517,69 @@
         changeBackgroundAnimation('fireworks');
         playExcitedMusic();
         break;
+      case 'calm':
+        changeBackgroundAnimation('waves');
+        playCalmMusic();
+        break;
+      case 'passionate':
+        changeBackgroundAnimation('flames');
+        playPassionateMusic();
+        break;
+      case 'playful':
+        changeBackgroundAnimation('bubbles');
+        playPlayfulMusic();
+        break;
+      case 'thoughtful':
+        changeBackgroundAnimation('stars');
+        playThoughtfulMusic();
+        break;
     }
     
     updateQuoteBasedOnMood(mood);
-    updateImagesBasedOnMood(mood);
   }
 
   function changeBackgroundAnimation(animationType) {
     // Supprime toutes les animations précédentes
-    document.body.classList.remove('confetti', 'hearts', 'sepia', 'fireworks');
+    document.body.classList.remove('confetti', 'hearts', 'sepia', 'fireworks', 'waves', 'flames', 'bubbles', 'stars');
     
     // Ajoute la nouvelle animation
     document.body.classList.add(animationType);
   }
 
   function playHappyMusic() {
-    // Ici, vous pouvez ajouter du code pour jouer une musique joyeuse
     console.log("Playing happy music");
   }
 
   function playRomanticMusic() {
-    // Ici, vous pouvez ajouter du code pour jouer une musique romantique
     console.log("Playing romantic music");
   }
 
   function playNostalgicMusic() {
-    // Ici, vous pouvez ajouter du code pour jouer une musique nostalgique
     console.log("Playing nostalgic music");
   }
 
   function playExcitedMusic() {
-    // Ici, vous pouvez ajouter du code pour jouer une musique excitante
     console.log("Playing excited music");
   }
 
-  function updateQuoteBasedOnMood(mood) {
-    let quote = "";
-    switch(mood) {
-      case 'happy':
-        quote = "Le bonheur est la seule chose qui se double si on le partage. - Albert Schweitzer";
-        break;
-      case 'romantic':
-        quote = "L'amour est composé d'une seule âme habitant deux corps. - Aristote";
-        break;
-      case 'nostalgic':
-        quote = "La nostalgie, c'est le désir d'on ne sait quoi. - Antoine de Saint-Exupéry";
-        break;
-      case 'excited':
-        quote = "L'excitation est le moteur de la découverte. - Isaac Asimov";
-        break;
-    }
-    loveQuoteElement.textContent = quote;
+  function playCalmMusic() {
+    console.log("Playing calm music");
   }
 
-  function updateImagesBasedOnMood(mood) {
-    const valentineImages = document.querySelectorAll('.valentine-image');
-    const imageUrls = {
-      'happy': [
-        'https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100'
-      ],
-      'romantic': [
-        'https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100'
-      ],
-      'nostalgic': [
-        'https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100'
-      ],
-      'excited': [
-        'https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100',
-        'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100'
-      ]
-    };
+  function playPassionateMusic() {
+    console.log("Playing passionate music");
+  }
 
-    valentineImages.forEach((img, index) => {
-      img.src = imageUrls[mood][index];
-    });
+  function playPlayfulMusic() {
+    console.log("Playing playful music");
+  }
+
+  function playThoughtfulMusic() {
+    console.log("Playing thoughtful music");
+  }
+
+  function updateQuoteBasedOnMood(mood) {
+    loveQuoteElement.textContent = loveQuotes[mood] || "L'amour est la poésie des sens. - Honoré de Balzac";
   }
 
   function updateCountdown() {
@@ -531,7 +602,7 @@
       'https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
       'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
       'https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
-      'https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixi d=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
+      'https://images.unsplash.com/photo-1545389336-cf090694435e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
       'https://images.unsplash.com/photo-1494774157365-9e04c6720e47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300',
       'https://images.unsplash.com/photo-1523301343968-6a6ebf63c672?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=300'
     ];
@@ -548,11 +619,6 @@
   function openModal(url) {
     modalImage.src = url;
     photoModal.style.display = 'flex';
-  }
-
-  function displayRandomLoveQuote() {
-    const randomIndex = Math.floor(Math.random() * loveQuotes.length);
-    loveQuoteElement.textContent = loveQuotes[randomIndex];
   }
 
   function addCustomDate() {
@@ -581,9 +647,6 @@
 
   // Créer l'album photo
   createPhotoAlbum();
-
-  // Afficher une citation d'amour aléatoire
-  displayRandomLoveQuote();
 
   // Animation d'entrée initiale
   gsap.from('.container', {
